@@ -1,0 +1,2 @@
+Clock	Not Done	Out	X
+0	0	0	0

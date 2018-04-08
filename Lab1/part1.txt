@@ -1,0 +1,2 @@
+In0	In1	In2	In3	In4	In5	In6	In7	Out
+0	0	0	0	0	0	0	0	000
