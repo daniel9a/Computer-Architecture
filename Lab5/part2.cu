@@ -5,12 +5,21 @@
 typedef std::chrono::high_resolution_clock Clock;
 #define NUM_THREADS_IN_BLOCK 256
 
+
 __global__
+//runtime GPU 195.58us
+//runtime CPU 3015 microseconds 
 void daxpyGPU(int arraySize, float *a, float *b, float *c, float *result)
 {
+    int index = blockIdx.x * blockDim.x + threadIdx.x;
+    int stride = blockDim.x * gridDim.x;
+    for (int i = index; i < arraySize; i+=stride) {
+        result[i] = a[i] * b[i] + c[i];
+    }
   // Insert your code here.
 } // daxpyGPU()
 
+//runtime 3015 microseconds 
 void daxpyCPU(int arraySize, float *a, float *x, float *y, float *result)
 {
   for(int index = 0; index < arraySize; index++)
